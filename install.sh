@@ -22,7 +22,7 @@ create_mainfest_file(){
     fi
     echo "WebSocket路径：${WSPATH}"
     
-    cat >  ${SH_PATH}/IBMYes-edit-from-CCChieh/v2ray-cloudfoundry/manifest.yml  << EOF
+    cat >  ${SH_PATH}/testing/cloudfoundry/manifest.yml  << EOF
     applications:
     - path: .
       name: ${IBM_APP_NAME}
@@ -30,7 +30,7 @@ create_mainfest_file(){
       memory: ${IBM_MEM_SIZE}M
 EOF
 
-    cat >  ${SH_PATH}/IBMYes-edit-from-CCChieh/v2ray-cloudfoundry/v2ray/config.json  << EOF
+    cat >  ${SH_PATH}/testing/cloudfoundry/fullaccesstointernet/config.json  << EOF
     {
         "inbounds": [
             {
@@ -66,10 +66,10 @@ EOF
 clone_repo(){
     echo "进行初始化。。。"
 	rm -rf IBMYes-edit-from-CCChieh
-    git clone https://github.com/rootmelo92118/IBMYes-edit-from-CCChieh
-    cd IBMYes-edit-from-CCChieh
+    git clone https://github.com/rootmelo92118/testing
+    cd testing
     git submodule update --init --recursive
-    cd v2ray-cloudfoundry/v2ray
+    cd cloudfoundry/
     # Upgrade V2Ray to the latest version
     rm v2ray v2ctl
     
@@ -94,19 +94,19 @@ clone_repo(){
     rm latest-v2ray.zip
     
     chmod 0755 ./*
-    cd ${SH_PATH}/IBMYes-edit-from-CCChieh/v2ray-cloudfoundry
+    cd ${SH_PATH}/testing/cloudfoundry
     echo "初始化完成。"
 }
 
 install(){
     echo "进行安装。。。"
-    cd ${SH_PATH}/IBMYes-edit-from-CCChieh/v2ray-cloudfoundry
+    cd ${SH_PATH}/testing/cloudfoundry
     ibmcloud target --cf
     echo "N"|ibmcloud cf install
     ibmcloud cf push
     echo "安装完成。"
-    echo "生成的随机 UUID：${UUID}"
-    echo "生成的随机 WebSocket路径：${WSPATH}"
+    echo "UUID：${UUID}"
+    echo "WebSocket路径：${WSPATH}"
     VMESSCODE=$(base64 -w 0 << EOF
     {
       "v": "2",
