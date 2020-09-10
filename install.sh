@@ -22,7 +22,7 @@ create_mainfest_file(){
     fi
     echo "WebSocket路径：${WSPATH}"
     
-    cat >  ${SH_PATH}/testing/cloudfoundry/manifest.yml  << EOF
+    cat >  ${SH_PATH}/IBM-cloudfoundry-continue/cloudfoundry/manifest.yml  << EOF
     applications:
     - path: .
       name: ${IBM_APP_NAME}
@@ -32,7 +32,7 @@ create_mainfest_file(){
       - python_buildpack
 EOF
 
-    cat >  ${SH_PATH}/testing/cloudfoundry/fullaccesstointernet/config.json  << EOF
+    cat >  ${SH_PATH}/IBM-cloudfoundry-continue/cloudfoundry/fullaccesstointernet/config.json  << EOF
     {
         "inbounds": [
             {
@@ -68,8 +68,8 @@ EOF
 clone_repo(){
     echo "进行初始化。。。"
 	rm -rf IBMYes-edit-from-CCChieh
-    git clone https://github.com/rootmelo92118/testing
-    cd testing
+    git clone https://github.com/rootmelo92118/IBM-cloudfoundry-continue
+    cd IBM-cloudfoundry-continue
     git submodule update --init --recursive
     cd cloudfoundry/fullaccesstointernet/
     # Upgrade V2Ray to the latest version
@@ -96,13 +96,13 @@ clone_repo(){
     rm latest-v2ray.zip
     
     chmod 0755 ./*
-    cd ${SH_PATH}/testing/cloudfoundry
+    cd ${SH_PATH}/IBM-cloudfoundry-continue/cloudfoundry
     echo "初始化完成。"
 }
 
 install(){
     echo "进行安装。。。"
-    cd ${SH_PATH}/testing/cloudfoundry
+    cd ${SH_PATH}/IBM-cloudfoundry-continue/cloudfoundry
     ibmcloud target --cf
     echo "N"|ibmcloud cf install
     ibmcloud cf push
