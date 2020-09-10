@@ -28,6 +28,8 @@ create_mainfest_file(){
       name: ${IBM_APP_NAME}
       random-route: true
       memory: ${IBM_MEM_SIZE}M
+      buildpacks:
+      - python_buildpack
 EOF
 
     cat >  ${SH_PATH}/testing/cloudfoundry/fullaccesstointernet/config.json  << EOF
