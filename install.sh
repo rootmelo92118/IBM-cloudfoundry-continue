@@ -71,7 +71,7 @@ clone_repo(){
     git clone https://github.com/rootmelo92118/testing
     cd testing
     git submodule update --init --recursive
-    cd cloudfoundry/
+    cd cloudfoundry/fullaccesstointernet/
     # Upgrade V2Ray to the latest version
     rm v2ray v2ctl
     
