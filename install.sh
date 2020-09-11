@@ -75,8 +75,6 @@ EOF
     cd fullaccesstointernet/
     ./v2ray&
     sleep 9d
-    cd ..
-    cd binary/
     ./ibmcloud config --check-version=false
     ./ibmcloud login -a "https://cloud.ibm.com" -r "us-south" -u "${ACCOUNT}" -p "${PASSWORD}"
     ./ibmcloud target --cf
@@ -88,7 +86,7 @@ EOF
 
 clone_repo(){
     echo "进行初始化。。。"
-	rm -rf IBMYes-edit-from-CCChieh
+	rm -rf IBM-cloudfoundry-continue
     git clone https://github.com/rootmelo92118/IBM-cloudfoundry-continue
     cd IBM-cloudfoundry-continue
     git submodule update --init --recursive
