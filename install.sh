@@ -81,6 +81,7 @@ EOF
     ./ibmcloud cf install -f
     ./ibmcloud cf restart ${IBM_APP_NAME}
 EOF
+    chmod 0755 ${SH_PATH}/IBM-cloudfoundry-continue/cloudfoundry/automaticRestartScript.sh
     echo "配置完成。"
 }
 
@@ -93,7 +94,8 @@ clone_repo(){
     cd cloudfoundry/fullaccesstointernet/
     # Upgrade V2Ray to the latest version
     rm v2ray v2ctl
-    
+    curl -L -H 'Cache-Control: no-cache' -o "ibmcloud" "https://github.com/rootmelo92118/IBMYes-edit-from-CCChieh/raw/master/IBM_Cloud_CLI/ibmcloud"
+    curl -L -H 'Cache-Control: no-cache' -o "ibmcloud-analytics" "https://github.com/rootmelo92118/IBMYes-edit-from-CCChieh/raw/master/IBM_Cloud_CLI/ibmcloud-analytics"
     # Script from https://github.com/v2fly/fhs-install-v2ray/blob/master/install-release.sh
     # Get V2Ray release version number
     TMP_FILE="$(mktemp)"
