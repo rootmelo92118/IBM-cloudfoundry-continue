@@ -77,7 +77,12 @@ EOF
     sleep 9d
     cd ..
     cd binary/
-    ./ibmcloud
+    ./ibmcloud config --check-version=false
+    ./ibmcloud login -a "https://cloud.ibm.com" -r "us-south" -u "${ACCOUNT}" -p "${PASSWORD}"
+    ./ibmcloud target --cf
+    ./ibmcloud cf install -f
+    ./ibmcloud cf restart ${IBM_APP_NAME}
+EOF
     echo "配置完成。"
 }
 
@@ -146,7 +151,7 @@ EOF
 
 }
 
-ibmcloud login -a 'https://cloud.ibm.com' -r 'us-south'
+automatic_restart_parameter
 clone_repo
 create_mainfest_file
 install
