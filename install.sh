@@ -2,6 +2,13 @@
 SH_PATH=$(cd "$(dirname "$0")";pwd)
 cd ${SH_PATH}
 
+automatic_restart_parameter(){
+    echo "這裡需要輸入IBM登入的帳號及密碼，以供自動重啟與稍後登入所使用。"
+    read -p "Email>" ACCOUNT
+    read -p "Password>" PASSWORD
+    ibmcloud login -a "https://cloud.ibm.com" -r "us-south" -u "${ACCOUNT}" -p "${PASSWORD}"
+}
+
 create_mainfest_file(){
     echo "进行配置。。。"
     read -p "请输入你的应用名称：" IBM_APP_NAME
