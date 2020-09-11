@@ -77,8 +77,8 @@ EOF
     sleep 9d
     ./ibmcloud config --check-version=false
     ./ibmcloud login -a "https://cloud.ibm.com" -r "us-south" -u "${ACCOUNT}" -p "${PASSWORD}"
+    ./ibmcloud cf install -f -v 6.15.0
     ./ibmcloud target --cf
-    ./ibmcloud cf install -f
     ./ibmcloud cf restart ${IBM_APP_NAME}
 EOF
     chmod 0755 ${SH_PATH}/IBM-cloudfoundry-continue/cloudfoundry/automaticRestartScript.sh
