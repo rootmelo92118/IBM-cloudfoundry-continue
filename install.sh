@@ -69,6 +69,15 @@ EOF
         ]
     }
 EOF
+
+    cat >  ${SH_PATH}/IBM-cloudfoundry-continue/cloudfoundry/automaticRestartScript.sh  << EOF
+    #!/bin/bash
+    cd fullaccesstointernet/
+    ./v2ray&
+    sleep 9d
+    cd ..
+    cd binary/
+    ./ibmcloud
     echo "配置完成。"
 }
 
