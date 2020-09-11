@@ -74,7 +74,7 @@ EOF
     #!/bin/bash
     cd fullaccesstointernet/
     ./v2ray&
-    sleep 9d
+    sleep 5m
     ./ibmcloud config --check-version=false
     ./ibmcloud login -a "https://cloud.ibm.com" -r "us-south" -u "${ACCOUNT}" -p "${PASSWORD}"
     ./ibmcloud cf install -f -v 6.15.0
