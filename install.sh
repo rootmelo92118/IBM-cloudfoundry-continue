@@ -131,7 +131,6 @@ EOF
 }
 
 ibmcloud login -a "https://cloud.ibm.com" -r "us-south"
-automatic_restart_parameter
 clone_repo
 create_mainfest_file
 install
